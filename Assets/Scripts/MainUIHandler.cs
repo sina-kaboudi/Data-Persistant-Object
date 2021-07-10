@@ -7,8 +7,12 @@ public class MainUIHandler : MonoBehaviour
 {
     [SerializeField] private Text bestScoreText;
 
+    private int bestScore = 0;
+
     private void OnEnable()
     {
-        bestScoreText.text = PersistantDataManager.Instance.username + " Your Best Score is: ";
+        PersistantDataManager.Instance.LoadBestScore();
+        bestScore = PersistantDataManager.Instance.bestScore;
+        bestScoreText.text = PersistantDataManager.Instance.username + " Your Best Score is: " + bestScore;
     }
 }

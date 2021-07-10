@@ -11,10 +11,12 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text BestScoreText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
     private int m_Points;
+    private int m_BestScore;
     
     private bool m_GameOver = false;
 
@@ -66,6 +68,13 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+
+        if (m_Points > m_BestScore)
+        {
+            m_BestScore = m_Points;
+            PersistantDataManager.Instance.bestScore = m_BestScore;
+            PersistantDataManager.Instance.SaveBestScore();
+        }
     }
 
     public void GameOver()
