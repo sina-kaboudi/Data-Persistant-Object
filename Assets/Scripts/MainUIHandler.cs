@@ -12,7 +12,7 @@ public class MainUIHandler : MonoBehaviour
     private void OnEnable()
     {
         PersistantDataManager.Instance.LoadBestScore();
-        bestScore = PersistantDataManager.Instance.bestScore;
+        bestScore = PersistantDataManager.Instance.bestScore;   
         bestScoreText.text = PersistantDataManager.Instance.username + " Your Best Score is: " + bestScore;
     }
 }
